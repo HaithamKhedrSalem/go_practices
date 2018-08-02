@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    # ports from container exposed to the docker machine and the guest machine
+    ports:
+    # 80 on the host, 8080 on the guest. Websever listens on 8080
+    - "8080:80" # http
+    env_file:
+    - app/.env
+    # Link to containers in another service
+    links:
+    - mysql
+  mysql:
+    image: mysql
+    restart: always
+    env_file: .env
+    volumes:
+    - ./mysql/init:/docker-entrypoint-initdb.d:ro
+    - ./mysql/data:/var/lib/mysql
