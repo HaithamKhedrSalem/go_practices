@@ -1,8 +1,8 @@
-# Dockerized simple Go app
+# Dockerized simple Go web app
 ## installation
 
 
-  - Go to hello_go directory
-  - Run ```docker build -t hello_go .```
-  - Run ```docker run hello_go```
+  - Go to api directory
+  - Run ``` sudo docker-compose build```
+  - Run ```sudo docker-compose up```
 
